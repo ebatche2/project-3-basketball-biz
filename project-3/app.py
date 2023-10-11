@@ -2,6 +2,7 @@
 # from models import create_classes
 import os
 import pandas as pd
+import geopandas as gpd
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, or_
 from sqlalchemy.ext.automap import automap_base
@@ -16,10 +17,14 @@ from flask import (
     request,
     redirect)
 import sqlite3
-con = sqlite3.connect("basketball.sqlite")
+
+app = Flask(__name__)
+
+
+con = sqlite3.connect("data/basketball.sqlite")
 cur = con.cursor()
-NBAquery = cur.execute("SELECT * FROM 'NBAStadiums'").fetchall()
-engine = create_engine("sqlite:///basketball.sqlite")
+NBAquery = cur.execute("SELECT * FROM 'NBAstadiums'").fetchall()
+engine = create_engine("sqlite:///data/basketball.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -36,7 +41,7 @@ ranking = Base.classes.ranking
 #################################################
 # Flask Setup
 #################################################
-app = Flask(__name__)
+# app = Flask(__name__)
 
 
 # ---------------------------------------------------------
@@ -48,7 +53,7 @@ def home():
 
 @app.route("/players")
 def players_df():
-    return render_template("players.html")
+    return render_template("data.html")
 
 @app.route("/stadiums")
 def stadiums():
