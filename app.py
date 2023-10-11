@@ -22,10 +22,10 @@ import sqlite3
 app = Flask(__name__, static_url_path="/static")
 
 
-con = sqlite3.connect("data/basketball.sqlite")
+con = sqlite3.connect("basketball.sqlite")
 cur = con.cursor()
 NBAquery = cur.execute("SELECT * FROM 'NBAstadiums'").fetchall()
-engine = create_engine("sqlite:///data/basketball.sqlite")
+engine = create_engine("sqlite:///basketball.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
