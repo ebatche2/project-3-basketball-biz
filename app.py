@@ -13,12 +13,13 @@ import pickle
 from flask import (
     Flask,
     render_template,
+    send_from_directory,
     jsonify,
     request,
     redirect)
 import sqlite3
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 
 
 con = sqlite3.connect("data/basketball.sqlite")
@@ -46,10 +47,18 @@ ranking = Base.classes.ranking
 
 # ---------------------------------------------------------
 # Web site
-@app.route("/")
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory('static', filename)
+
+@app.route("/home")
 def home():
     return render_template("index.html")
 
+@app.route('/mappings')
+def mappings():
+    return render_template('mappings.html')
 
 @app.route("/players")
 def players_df():
