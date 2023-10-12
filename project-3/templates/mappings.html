@@ -3,6 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>NBA Basketball Biz</title>
+    <title>Stadiums Map</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+      <body>
+        <div id="map" style="height: 500px;"></div>
+        
+        <!-- Include Leaflet and Leaflet GeoJSON libraries -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-geojson/dist/leaflet.geojson.js"></script>
+        
+        <script>
+            // JavaScript code for rendering the map and GeoJSON data will go here
+        </script>
+    </body>
+  
+
   
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -11,6 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 
   
     <!-- Leaflet CSS -->
@@ -24,7 +41,7 @@
       crossorigin=""></script>
   
     <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="map.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   
   </head>
   
@@ -56,7 +73,7 @@
     <div id="map" style="width: 100%; height: 400px"></div>
   
     <!-- JavaScript file -->
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="map.js"></script>
   </body>
 
   <br>
