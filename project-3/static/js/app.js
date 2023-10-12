@@ -44,3 +44,25 @@ for (let i = 0; i < cities.length; i++) {
     .bindPopup(`<h1>${city.name}</h1> <hr> <h3>Population ${city.population.toLocaleString()}</h3>`)
     .addTo(myMap);
 }
+
+
+<script>
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Set Data
+      const data = google.visualization.arrayToDataTable([
+        // Data for the bar chart...
+      ]);
+
+      // Set Options
+      const options = {
+        title: 'TOP 10 TEAMS WITH THE HIGHEST DEBT VALUE',
+      };
+
+      // Draw
+      const chart = new google.visualization.BarChart(document.getElementById('barChart'));
+      chart.draw(data, options);
+    }
+  </script>
