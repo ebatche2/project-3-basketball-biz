@@ -24,20 +24,20 @@ if (basketball_data == "bar")
     type: "bar", 
     x: xValues,
     y: yValues,
-    // data: {
-    //   labels: xValues,
-    //   datasets: [{
-    //     backgroundColor: barColors,
-    //     data: yValues
-    //   }]
-    // },
-    // options: {
-    //   legend: { display: false },
-    //   title: {
-    //     display: true,
-    //     text: "Top 7 Teams Whose Value Changed in the Last 1 Year"
-    //   }
-    // }
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Top 7 Teams Whose Value Changed in the Last 1 Year"
+      }
+    }
   };
 
   Plotly.newPlot("myChart", [trace1]);

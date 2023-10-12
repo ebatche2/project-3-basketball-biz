@@ -73,11 +73,19 @@ def stadiums():
     geo_json = to_geojson(df=NBA_stadiums, lat='Lat', lon='Long',
                  properties=['Team','League','Division'])
     return render_template('mappings.html')
-    # session.close()
+    
+def teams():
+    conn = sqlite3.connect("basketball.sqlite")
+    cursor = conn.cursor()
+    cursor.execute("SELECT TeamName FROM teams_info")
+    team_names = cursor.fetchall()
+    conn.close()
+    return render_template("index.html", team_names=team_names)
+
 
    
 
-    #return jsonify(geo_json)
+    
 
 @app.route("/api/stadiums_map")
 def stadiums_map():
@@ -93,6 +101,7 @@ def stadiums_map():
    
 
     return jsonify(geo_json)
+
 
 
 

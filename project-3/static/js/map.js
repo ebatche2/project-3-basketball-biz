@@ -7,7 +7,7 @@ d3.json("api/stadiums_map").then((data) => {
   // Using the features array sent back in the API data, create a GeoJSON layer, and add it to the map.
 
   function useFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.Division + "</h3><hr><p>" + feature.properties.Team + "</p>");
+    layer.bindPopup("<h3>" + feature.properties.Team + "</h3><hr><p>" + feature.properties.Division + "</p>");
   }
 
   let stadiums = L.geoJSON(data.features, {
