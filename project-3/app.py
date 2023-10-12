@@ -52,7 +52,7 @@ ranking = Base.classes.ranking
 def static_files(filename):
     return send_from_directory('static', filename)
 
-@app.route("/home")
+@app.route("/")
 def home():
     return render_template("index.html")
 
