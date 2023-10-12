@@ -1,49 +1,90 @@
 
 // Add a tile layer.
-var map = L.map('map').setView([0, 0], 2); // Set initial map center and zoom level
-
-// Add a tile layer (you can use other tile providers)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-// Parse the GeoJSON data and add it to the map
-var geojsonLayer = L.geoJSON(geo_json, {
-    onEachFeature: function (feature, layer) {
-        // Customize the popup content for each feature
-        var popupContent = "<b>Team:</b> " + feature.properties.Team + "<br>" +
-                           "<b>League:</b> " + feature.properties.League + "<br>" +
-                           "<b>Division:</b> " + feature.properties.Division;
-
-        layer.bindPopup(popupContent);
-    }
-}).addTo(map);
 
 
-// Looping through the cities array, create one marker for each city, bind a popup containing its name and population, and add it to the map.
-for (let i = 0; i < cities.length; i++) {
-  let city = cities[i];
-  L.marker(city.location)
-    .bindPopup(`<h1>${city.name}</h1> <hr> <h3>Population ${city.population.toLocaleString()}</h3>`)
-    .addTo(myMap);
+function selectTeam(basketball_data)
+
+{
+  console.log(basketball_data)
+
+  const xValues = ["Phoenix Suns", "Miami Heat", "Washington Wizards", "Philadelphia 76ers", "Toronto Raptors", "Golden State Warriors", "Cleveland Cavaliers"];
+  const yValues = [50, 30, 30, 29, 25, 25, 24];
+  const barColors = [
+    "Blue",
+    "orange",
+    "pink",
+    "green",
+    "red",
+    "yellow",
+    "purple"
+  ];
+if (basketball_data == "bar")
+{
+ var trace1 = {
+    type: "bar", 
+    x: xValues,
+    y: yValues,
+    // data: {
+    //   labels: xValues,
+    //   datasets: [{
+    //     backgroundColor: barColors,
+    //     data: yValues
+    //   }]
+    // },
+    // options: {
+    //   legend: { display: false },
+    //   title: {
+    //     display: true,
+    //     text: "Top 7 Teams Whose Value Changed in the Last 1 Year"
+    //   }
+    // }
+  };
+
+  Plotly.newPlot("myChart", [trace1]);
+
+}
+else if (basketball_data == "line")
+{
+  var trace1 = {
+  mode: "lines", 
+  x: xValues,
+  y: yValues,
+
+};
+
+Plotly.newPlot("myChart", [trace1]);
+    // google.charts.load('current', { 'packages': ['corechart'] });
+    // google.charts.setOnLoadCallback(drawChart);
+
+    // function drawChart() {
+    //   // Set Data
+    //   const data = google.visualization.arrayToDataTable([
+    //     // Data for the bar chart...
+    //   ]);
+
+    //   // Set Options
+    //   const options = {
+    //     title: 'TOP 10 TEAMS WITH THE HIGHEST DEBT VALUE',
+    //   };
+
+    //   // Draw
+    //   const chart = new google.visualization.BarChart(document.getElementById('barChart'));
+    //   chart.draw(data, options);
+    // }
+  }
+else if (basketball_data == "doughnut")
+{
+  var trace1 = {
+  values: yValues,
+  labels: xValues,
+  type: 'pie',
+  hole: .4,
+};
+Plotly.newPlot("myChart", [trace1]);
+
+
 }
 
 
-<script>
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      // Set Data
-      const data = google.visualization.arrayToDataTable([
-        // Data for the bar chart...
-      ]);
-
-      // Set Options
-      const options = {
-        title: 'TOP 10 TEAMS WITH THE HIGHEST DEBT VALUE',
-      };
-
-      // Draw
-      const chart = new google.visualization.BarChart(document.getElementById('barChart'));
-      chart.draw(data, options);
-    }
-  </script>
+}
+  selectTeam("bar")
