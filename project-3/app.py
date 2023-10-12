@@ -60,7 +60,7 @@ def home():
 def mappings():
     return render_template('mappings.html')
 
-@app.route("/players")
+@app.route("/data")
 def players_df():
     return render_template("data.html")
 
@@ -72,13 +72,27 @@ def stadiums():
 
     geo_json = to_geojson(df=NBA_stadiums, lat='Lat', lon='Long',
                  properties=['Team','League','Division'])
+    return render_template('mappings.html')
+    # session.close()
 
+   
+
+    #return jsonify(geo_json)
+
+@app.route("/api/stadiums_map")
+def stadiums_map():
+    # Create our session (link) from Python to the DB
+    # session = Session(engine)
+    NBA_stadiums = pd.DataFrame(NBAquery,columns=['Team','League','Division','Lat','Long','ID'])
+
+    geo_json = to_geojson(df=NBA_stadiums, lat='Lat', lon='Long',
+                 properties=['Team','League','Division'])
+    print(geo_json)
     # session.close()
 
    
 
     return jsonify(geo_json)
-
 
 
 
