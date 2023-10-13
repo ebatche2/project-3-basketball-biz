@@ -17,7 +17,7 @@ Create a visual map for team owners to see stadium locations and facts
 
 # Steps 
 **Find & Prepare Data**
-We used Kaggle and Web scraping (https://www.forbes.com/nba-valuations/list/#tab:overall) and (https://geoshen.com/posts/nba-arenas-ranked-by-seating-capacity)  to find data on:
+We used Kaggle (https://www.kaggle.com/datasets/logandonaldson/sports-stadium-locations) and Web scraping (https://www.forbes.com/nba-valuations/list/#tab:overall) and (https://geoshen.com/posts/nba-arenas-ranked-by-seating-capacity)  to find data on:
 - team value, debt, revenue, operating income, Team rankings & Statistics, Stadium info, Stadium Costs, Costs per Seat and more
 - Then we cleaned up the Data & created 5 tables in DB Browser for SQLite
 
